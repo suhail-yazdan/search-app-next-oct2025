@@ -137,12 +137,12 @@ export default function Home() {
 function Card({ sname, sloc, stype }) {
   const [locations, setLocations] = useState([]);
 
-  {console.log("category - - - ", stype)}
+  // {console.log("category - - - ", stype)}
+
+  console.log("location ids for each card", sloc)
 
   const getRoute = () => {
     const resultLocations = [];
-    
-    // console.log("category ------ ", stype)
 
     const routes = {
       RT101: ["Tiruchendur", "Tuticorin", "Madurai", "Trichy", "Perungulathur", "Chennai"],
@@ -176,7 +176,7 @@ function Card({ sname, sloc, stype }) {
       if (stype === "Buses" || stype === "Flights") {
         const matchedCities = routes[route];
 
-        console.log("matchedc cities ----", matchedCities)
+        // console.log("matchedc cities ----", matchedCities)
 
         if (matchedCities){
           opt = matchedCities.map((city, index) => (
@@ -188,7 +188,7 @@ function Card({ sname, sloc, stype }) {
             </div>
           ))
 
-          console.log("opt- - - - - -", opt)
+          // console.log("opt- - - - - -", opt)
         }
       }
   
