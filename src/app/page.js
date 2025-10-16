@@ -44,11 +44,11 @@ export default function Home() {
     })
   }
 
-  console.log("results", results)
+  // console.log("results", results)
   
-  console.log("category", category)
+  // console.log("category", category)
 
-  console.log("selected Category", selectedCategory)
+  // console.log("selected Category", selectedCategory)
 
   const dropdownRef = useRef(null);
 
@@ -116,134 +116,116 @@ export default function Home() {
 
       <main>
         <div className="pt-10">
+          
           {results.map((res, ind) => (
-              <section key={ind} className="w-[85%] mx-auto px-8 py-10 rounded-2xl shadow-lg mt-8">
-                <h2 className="text-3xl font-semibold">{res.serviceName}</h2>
-                <h3 className="text-2xl">{res.locations.length} {res.serviceType || category} available</h3>
-                <div className="flex items-center h-20 px-5 mt-6 border border-gray-300 hover:border-gray-400 hover:bg-gray-100 rounded-xl">
-                  {
-                    res.locations.map((loc, index) =>(
-                      <div key={index} className="flex items-center">
-                        <span>{loc}</span>
-                        {index !== res.locations.length - 1 && (
-                          <MdArrowForwardIos size={24} color="gray" className="mx-2" />
-                        )}
-                      </div>
-                    ))
-                  }
-                </div>
-              </section>
+              <Card
+                key={res.serviceID}
+                sname={res.serviceName}
+                sloc={res.locations}
+                stype={res.serviceType || category}
+              />
             ))            
           }
 
-
-
-
-
-
-
-          {/* <section className="w-[85%] mx-auto px-8 py-10 rounded-2xl shadow-lg mt-8">
-            <h2 className="text-3xl font-semibold">SRS Travels</h2>
-            <h3 className="text-2xl">5 Buses available</h3>
-
-            <div className="flex items-center h-20 px-5 mt-6 border border-gray-300 hover:border-gray-400 hover:bg-gray-100 rounded-xl">
-              Tiruchendur <MdArrowForwardIos size={32} color="gray" className="mx-4" /> 
-              TutiCorin <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-              Madurai <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-              Trichi <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-              Perungulathur <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-              Chennai <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-            </div>
-
-            <div className="flex items-center h-20 px-5 mt-6 border border-gray-300 hover:border-gray-400 hover:bg-gray-100 rounded-xl">
-              Tiruchendur <MdArrowForwardIos size={32} color="gray" className="mx-4" /> 
-              TutiCorin <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-              Madurai <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-              Karur <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-              Salem <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-              Hosur <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-              Bengaluru <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-            </div>
-
-            <div className="flex items-center h-20 px-5 mt-6 border border-gray-300 hover:border-gray-400 hover:bg-gray-100 rounded-xl">
-              Tirunelveli <MdArrowForwardIos size={32} color="gray" className="mx-4" /> 
-              Madurai <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-              Trichi <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-              Perungulathur <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-              Chennai <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-            </div>
-
-            <div className="flex items-center h-20 px-5 mt-6 border border-gray-300 hover:border-gray-400 hover:bg-gray-100 rounded-xl">
-              Chennai <MdArrowForwardIos size={32} color="gray" className="mx-4" /> 
-              Nellor <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-              Ogole <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-              Hyderabad <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-            </div>
-
-            <div className="flex items-center h-20 px-5 mt-6 border border-gray-300 hover:border-gray-400 hover:bg-gray-100 rounded-xl">
-              Bengaluru <MdArrowForwardIos size={32} color="gray" className="mx-4" /> 
-              Dharmavaram <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-              Anantapur <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-              Mahbubnagar <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-              Hyderabad <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-            </div>
-          </section>
-
-          <section className="w-[85%] mx-auto px-8 py-10 rounded-2xl shadow-lg mt-8">
-            <h2 className="text-3xl font-semibold">Indigo Airlines</h2>
-            <h3 className="text-2xl">5 Flights available</h3>
-
-
-            <div className="flex items-center h-20 px-5 mt-6 border border-gray-300 hover:border-gray-400 hover:bg-gray-100 rounded-xl">
-              Tuticorin, India <MdArrowForwardIos size={32} color="gray" className="mx-4" /> 
-              Chennai, India <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-            </div>
-
-            <div className="flex items-center h-20 px-5 mt-6 border border-gray-300 hover:border-gray-400 hover:bg-gray-100 rounded-xl">
-              Madurai, India <MdArrowForwardIos size={32} color="gray" className="mx-4" /> 
-              Chennai India <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-            </div>
-
-            <div className="flex items-center h-20 px-5 mt-6 border border-gray-300 hover:border-gray-400 hover:bg-gray-100 rounded-xl">
-              Madurai, India <MdArrowForwardIos size={32} color="gray" className="mx-4" /> 
-              Bengaluru, India <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-            </div>
-
-            <div className="flex items-center h-20 px-5 mt-6 border border-gray-300 hover:border-gray-400 hover:bg-gray-100 rounded-xl">
-              Chennai, India <MdArrowForwardIos size={32} color="gray" className="mx-4" /> 
-              Doha, Qatar <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-            </div>
-
-            <div className="flex items-center h-20 px-5 mt-6 border border-gray-300 hover:border-gray-400 hover:bg-gray-100 rounded-xl">
-              Doha, Qatar <MdArrowForwardIos size={32} color="gray" className="mx-4" /> 
-              Mumbai, India <MdArrowForwardIos size={32} color="gray" className="mx-4" />
-            </div>
-          </section>
-
-          <section className="w-[85%] mx-auto px-8 py-10 rounded-2xl shadow-lg mt-8">
-            <h2 className="text-3xl font-semibold">Hotel Mariott</h2>
-            <h3 className="text-2xl">3 Hotels Available</h3>
-
-
-            <div className="flex items-center h-20 px-5 mt-6 border border-gray-300 hover:border-gray-400 hover:bg-gray-100 rounded-xl">
-              Melbourne, Australia
-            </div>
-
-            <div className="flex items-center h-20 px-5 mt-6 border border-gray-300 hover:border-gray-400 hover:bg-gray-100 rounded-xl">
-              Auckland, New Zealand
-            </div>
-
-            <div className="flex items-center h-20 px-5 mt-6 border border-gray-300 hover:border-gray-400 hover:bg-gray-100 rounded-xl">
-              Dubai, UAE
-            </div>
-
-            <div className="flex items-center h-20 px-5 mt-6 border border-gray-300 hover:border-gray-400 hover:bg-gray-100 rounded-xl">
-              Chicago USA
-            </div>
-          </section> */}
         </div>
       </main>
       
     </>
+  );
+}
+
+function Card({ sname, sloc, stype }) {
+  const [locations, setLocations] = useState([]);
+
+  {console.log("category - - - ", stype)}
+
+  const getRoute = () => {
+    const resultLocations = [];
+    
+    // console.log("category ------ ", stype)
+
+    const routes = {
+      RT101: ["Tiruchendur", "Tuticorin", "Madurai", "Trichy", "Perungulathur", "Chennai"],
+      RT102: ["Tiruchendur", "Tuticorin", "Madurai", "Karur", "Salem", "Hosur", "Bengaluru"],
+      RT103: ["Tirunelveli", "Madurai", "Trichy", "Perungulathur", "Chennai"],
+      RT104: ["Tuticorin", "Madurai", "Salem", "Coimbatore"],
+      RT105: ["Coimbatore", "Erode", "Salem", "Dharmapuri", "Hosur", "Bengaluru"],
+      RT106: ["Coimbatore", "Erode", "Salem", "Viluppuram", "Tindivanam", "Chennai"],
+      RT107: ["Goa", "Belgaum", "Kolhapur", "Satara", "Pune", "Mumbai"],
+      RT108: ["Mumbai", "Vadodara", "Udaipur", "Jaipur", "New Delhi"],
+      RT109: ["Chennai", "Nellore", "Ongole", "Hyderabad"],
+      RT110: ["Bengaluru", "Dharmavaram", "Anantapur", "Mahbubnagar", "Hyderabad"],
+      RT201: ["Tuticorin, India", "Chennai, India"],
+      RT202: ["Madurai, India", "Chennai, India"],
+      RT203: ["Madurai, India", "Bengaluru, India"],
+      RT210: ["Chennai, India", "Doha, Qatar"],
+      RT211: ["Mumbai, India", "Doha, Qatar"],
+      RT212: ["Bengaluru, India", "Doha, Qatar"],
+      RT220: ["New Delhi, India", "Dubai, UAE", "New York, USA"],
+      RT221: ["Mumbai, India", "Dubai, UAE", "New York, USA"],
+      RT222: ["Chennai, India", "Dubai, UAE", "New York, USA"],
+      RT230: ["Dubai, UAE", "Port Louis, Singapore"],
+      RT231: ["Trichy, India", "Port Louis, Singapore"],
+      RT232: ["Chennai, India", "Bali, Indonesia"],
+    };
+  
+    sloc.forEach((route) => {
+      let opt = [];
+  
+      // For Bus or Flight routes — match route code
+      if (stype === "Buses" || stype === "Flights") {
+        const matchedCities = routes[route];
+
+        console.log("matchedc cities ----", matchedCities)
+
+        if (matchedCities){
+          opt = matchedCities.map((city, index) => (
+            <div key={index} className="flex items-center">
+              <span>{city}</span>
+              {index !== matchedCities.length - 1 && (
+                <MdArrowForwardIos size={24} color="gray" className="mx-2" />
+              )}
+            </div>
+          ))
+
+          console.log("opt- - - - - -", opt)
+        }
+      }
+  
+      // For Hotels — directly show the route name
+      if (stype === "Hotels") {
+        opt = <span>{route}</span>;
+      }
+  
+      // Add the route block
+      const routeList = (
+        <div
+          key={route}
+          className="flex items-center h-20 px-5 mt-6 border border-gray-300 hover:border-gray-400 hover:bg-gray-100 rounded-xl"
+        >
+          {opt}
+        </div>
+      );
+  
+      resultLocations.push(routeList);
+    });
+  
+    setLocations(resultLocations);
+  };
+  
+  useEffect(() => {
+    getRoute();
+  }, [stype, sloc]);
+
+  return (
+    <section className="w-[85%] mx-auto px-8 py-10 rounded-2xl shadow-lg mt-8">
+      <h2 className="text-3xl font-semibold">{sname}</h2>
+      <h3 className="text-2xl">
+        {sloc.length} {stype} available
+      </h3>
+
+      <div>{locations}</div>
+
+    </section>
   );
 }
